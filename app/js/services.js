@@ -6,25 +6,45 @@ var services = angular.module('services', []);
 
 services.service('KarenService', ['$http', function($http) {
   this.page = 1;
+  this.perPage = 10;
   this.url = 'http://fiahfy.tumblr.com/tagged/kujo+karen/page/';
+  this.urls = [];
+  this.noMoreLoad = false;
+  this.isLoading = false;
 
-  this.getThumbnailUrls = function(callback, more) {
+  var me = this;
+  this.loadUrls = function(callback, more) {
+    if (this.isLoading) {
+      return;
+    }
+    this.isLoading = true;
+
     more = more || false;
     if (more) {
+      if (this.noMoreLoad) {
+        return;
+      }
       this.page++;
+    } else {
+      this.noMoreLoad = false;
     }
+
     $http.get(this.url + this.page).then(function(data) {
-      var urls = []
+      me.isLoading = false;
       $(data.data).find('.post img').each(function() {
-        urls.push($(this).attr('src'));
+        me.urls.push($(this).attr('src'));
       });
-      callback(urls);
+      if (me.urls.length < me.page * me.perPage) {
+        console.log('no');
+        me.noMoreLoad = true;
+      }
+      callback();
     });
   };
 
-  this.sendTag = function(url) {
+  this.sendTagToContentScript = function(url) {
     url = this.convertUrlWithSize(url, 500);
-    var tag = this.getMarkdown(url);
+    var tag = this.getMarkdownWithImageUrl(url);
     chrome.windows.getCurrent(function(window) {
       chrome.tabs.query({'windowId': window.id, 'active': true}, function(result) {
         chrome.tabs.sendRequest(result[0].id, {
@@ -35,7 +55,7 @@ services.service('KarenService', ['$http', function($http) {
     });
   };
 
-  this.getMarkdown = function(url) {
+  this.getMarkdownWithImageUrl = function(url) {
     return '![LKTM](' + url + ')';
   };
 

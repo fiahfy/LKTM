@@ -2,26 +2,66 @@
 
 /* popup.html */
 #popup {
+    height: 360px;
     width: 320px;
-    height: 90px;
 }
+
+#loader {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+#loader div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
 #popup ul {
-    padding: 0;
     display: inline-block;
+    height: 100%;
+    margin: 0;
+    overflow: auto;
+    padding: 0;
 }
+
 #popup li {
-    list-style: none;
+    cursor: pointer;
     float:left;
     height: 90px;
-    width: 160px;
+    list-style: none;
     text-align: center;
-    cursor: pointer;
+    width: 160px;
 }
+
 #popup li img {
     max-height: 90px;
     max-width: 160px;
 }
+
 #popup li img:hover {
     opacity: 0.6;
     transition: 0.1s ease-in-out;
+}
+
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -ms-animation: spin .7s infinite linear;
+    -webkit-animation: spinw .7s infinite linear;
+    -moz-animation: spinm .7s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg); }
+    to { transform: scale(1) rotate(360deg); }
+}
+
+@-webkit-keyframes spinw {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+
+@-moz-keyframes spinm {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
 }

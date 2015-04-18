@@ -1,0 +1,27 @@
+@charset 'utf-8';
+
+/* popup.html */
+#popup {
+    width: 320px;
+    height: 90px;
+}
+#popup ul {
+    padding: 0;
+    display: inline-block;
+}
+#popup li {
+    list-style: none;
+    float:left;
+    height: 90px;
+    width: 160px;
+    text-align: center;
+    cursor: pointer;
+}
+#popup li img {
+    max-height: 90px;
+    max-width: 160px;
+}
+#popup li img:hover {
+    opacity: 0.6;
+    transition: 0.1s ease-in-out;
+}

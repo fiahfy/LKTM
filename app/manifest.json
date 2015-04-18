@@ -1,0 +1,32 @@
+{
+  "name": "LKTM",
+  "version": "1.0.0",
+  "description": "Looks Karen to me.",
+
+  "manifest_version": 2,
+
+  "icons": {
+  },
+
+  "browser_action": {
+    "default_popup": "html/popup.html"
+  },
+
+  "content_scripts": [
+    {
+      "run_at": "document_end",
+      "matches": ["<all_urls>"],
+      "js": [
+        "libs/jquery/jquery.js",
+        "js/content_scripts.js"
+      ]
+    }
+  ],
+
+  "permissions": [
+    "tabs",
+    "http://fiahfy.tumblr.com/*"
+  ],
+
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://ssl.google-analytics.com; object-src 'self'"
+}

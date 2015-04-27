@@ -9,8 +9,8 @@ services.service('KarenService', ['$http', function($http) {
   this.perPage = 10;
   this.url = 'http://fiahfy.tumblr.com/tagged/kujo+karen/page/';
   this.urls = [];
-  this.noMoreLoad = false;
   this.isLoading = false;
+  this.canMoreLoad = true;
 
   var me = this;
   this.loadUrls = function(callback, more) {
@@ -21,12 +21,12 @@ services.service('KarenService', ['$http', function($http) {
 
     more = more || false;
     if (more) {
-      if (this.noMoreLoad) {
+      if (!this.canMoreLoad) {
         return;
       }
       this.page++;
     } else {
-      this.noMoreLoad = false;
+      this.canMoreLoad = true;
     }
 
     $http.get(this.url + this.page).then(function(data) {
@@ -35,8 +35,7 @@ services.service('KarenService', ['$http', function($http) {
         me.urls.push($(this).attr('src'));
       });
       if (me.urls.length < me.page * me.perPage) {
-        console.log('no');
-        me.noMoreLoad = true;
+        me.canMoreLoad = false;
       }
       callback();
     });

@@ -10,7 +10,7 @@ directives.directive('whenScrolled', function() {
 
     angular.element(raw).bind('scroll load', function(evt) {
       var rect = raw.getBoundingClientRect();
-      if (rect.bottom > window.innerHeight - 5) {
+      if (raw.scrollTop + raw.clientHeight >= raw.scrollHeight - 90) {
         scope.$apply(attr.whenScrolled);
       }
     });

@@ -34,6 +34,15 @@
     width: 160px;
 }
 
+#popup li.ng-enter {
+    transition: 0.1s ease-in-out;
+    opacity: 0;
+}
+
+#popup li.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+
 #popup li img {
     max-height: 90px;
     max-width: 160px;
@@ -42,6 +51,14 @@
 #popup li img:hover {
     opacity: 0.6;
     transition: 0.1s ease-in-out;
+}
+
+#popup li#more {
+    width: 320px;
+}
+
+#popup li#more span {
+    line-height: 90px;
 }
 
 .glyphicon-refresh-animate {

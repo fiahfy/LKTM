@@ -6,7 +6,8 @@ var controllers = angular.module('controllers', []);
 
 controllers.controller('PopupMainCtrl', ['$scope', '$window', 'KarenService', function($scope, $window, KarenService) {
   $scope.urls = [];
-  $scope.isLoading = true;
+  $scope.isFirstLoading = true;
+  $scope.canMoreLoad = false;
 
   $scope.init = function() {
     $scope.load();
@@ -14,8 +15,9 @@ controllers.controller('PopupMainCtrl', ['$scope', '$window', 'KarenService', fu
 
   $scope.load = function(more) {
     KarenService.loadUrls(function() {
-      $scope.isLoading = false;
+      $scope.isFirstLoading = false;
       $scope.urls = KarenService.urls;
+      $scope.canMoreLoad = KarenService.canMoreLoad;
     }, more);
   };
 

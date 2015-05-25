@@ -3,6 +3,8 @@ LKTM
 
 Looks Karen to me.
 
+LGTM with Karen Kujo.
+
 ![LKTM](http://40.media.tumblr.com/d806aefe56b5d746e93e6d3723f61a7e/tumblr_nkjfj6mM5K1spko4ho2_r1_1280.jpg)
 
 Version
@@ -24,4 +26,4 @@ npm install
 Usage
 ---------
 
-* Click browser action button at the upper right, and click a image you want.
+* At PR pages, click browser action button at the upper right, and select an image.

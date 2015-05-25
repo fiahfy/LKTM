@@ -21,7 +21,7 @@
       "run_at": "document_end",
       "matches": ["<all_urls>"],
       "js": [
-        "libs/jquery/js/jquery.js",
+        "libs/jquery/dist/jquery.min.js",
         "js/content_scripts.js"
       ]
     }

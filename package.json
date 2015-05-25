@@ -25,6 +25,7 @@
     "gulp-minify-html": "^1.0.2",
     "gulp-uglify": "^1.2.0",
     "gulp-usemin": "^0.3.11",
+    "gulp-zip": "^3.0.2",
     "run-sequence": "^1.1.0"
   },
   "devDependencies": {}

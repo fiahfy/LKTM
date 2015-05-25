@@ -8,7 +8,7 @@ gulp.task 'bower', ->
   .pipe gulp.dest 'app/libs'
 
 gulp.task 'clean', (callback) ->
-  del ['.tmp', 'dist', 'dist.zip'], callback
+  del ['dist', 'dist.zip'], callback
 
 gulp.task 'copy', ->
   gulp.src 'app/**'
@@ -45,5 +45,10 @@ gulp.task 'build', (callback) ->
     'header'
     callback
   )
+
+gulp.task 'zip', ->
+  gulp.src 'dist'
+  .pipe plugins.zip 'dist.zip'
+  .pipe gulp.dest '.'
 
 gulp.task 'default', ['bower'], ->

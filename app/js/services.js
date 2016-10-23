@@ -7,7 +7,7 @@ var services = angular.module('services', []);
 services.service('KarenService', ['$http', function($http) {
   this.page = 1;
   this.perPage = 10;
-  this.url = 'http://fiahfy.tumblr.com/tagged/kujo+karen/page/';
+  this.url = 'https://fiahfy.tumblr.com/tagged/kujo+karen/page/';
   this.urls = [];
   this.isLoading = false;
   this.canMoreLoad = true;
@@ -29,7 +29,11 @@ services.service('KarenService', ['$http', function($http) {
       this.canMoreLoad = true;
     }
 
-    $http.get(this.url + this.page).then(function(data) {
+    $http({
+      method: 'GET',
+      url: this.url + this.page,
+      headers: {'Accept': 'text/html'}
+    }).then(function(data) {
       me.isLoading = false;
       $(data.data).find('.post img').each(function() {
         me.urls.push($(this).attr('src'));

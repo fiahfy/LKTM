@@ -1,32 +1,57 @@
 {
-  "name": "LKTM",
-  "description": "Looks Karen to me.",
-  "version": "1.0.0",
+  "name": "lktm",
+  "description": "Looks Karen to me",
+  "version": "0.0.1",
   "author": {
-    "name": "fiahfy"
-  },
-  "homepage": "https://github.com/fiahfy/LKTM",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/fiahfy/LKTM.git"
-  },
-  "license": "MIT",
-  "scripts": {
-    "postinstall": "gulp"
+    "name": "fiahfy",
+    "email": "d.fiahfy@gmail.com",
+    "url": "http://fiahfy.blogspot.com/"
   },
   "dependencies": {
-    "coffee-script": "^1.9.2",
-    "del": "^1.2.0",
-    "gulp": "^3.8.11",
-    "gulp-bower": "0.0.10",
-    "gulp-header": "^1.2.2",
-    "gulp-load-plugins": "^0.10.0",
-    "gulp-minify-css": "^1.1.1",
-    "gulp-minify-html": "^1.0.2",
-    "gulp-uglify": "^1.2.0",
-    "gulp-usemin": "^0.3.11",
-    "gulp-zip": "^3.0.2",
-    "run-sequence": "^1.1.0"
+    "vue": "^2.5.16",
+    "vuetify": "^1.0.17"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-vue": "^4.5.0",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "vue-loader": "^15.0.5",
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^4.0.1",
+    "webpack-chrome-extension-reloader": "^0.8.3",
+    "webpack-cli": "^3.0.2"
+  },
+  "homepage": "http://fiahfy.blogspot.com/",
+  "keywords": [
+    "chrome extension",
+    "vue",
+    "vuetify",
+    "webpack"
+  ],
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fiahfy/LKTM"
+  },
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack -w --config webpack.config.dev.babel.js",
+    "lint": "eslint src --ext .js,.vue",
+    "package": "NODE_ENV=production npm run build && mkdir -p dist && zip -r dist/LKTM.zip app",
+    "test": "npm run lint"
+  }
 }

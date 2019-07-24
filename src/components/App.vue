@@ -4,23 +4,21 @@
       <v-container
         id="scroll-target"
         ref="container"
-        class="scroll-y"
+        class="overflow-y-auto py-0"
         fluid
-        grid-list-xs
-        pa-1
       >
-        <v-layout ref="layout" v-scroll:#scroll-target="onScroll" row wrap>
-          <v-flex v-for="url in urls" :key="url" xs6>
+        <v-row ref="layout" v-scroll:#scroll-target="onScroll">
+          <v-col v-for="url in urls" :key="url" cols="6" class="pa-0">
             <v-card flat tile @click="(e) => onClick(e, url)">
               <v-img :src="url" height="75px" />
             </v-card>
-          </v-flex>
-          <v-flex v-if="loadable" ref="indicator" xs12 text-xs-center>
+          </v-col>
+          <v-col v-if="loadable" ref="indicator" cols="12" class="pa-0">
             <v-card flat>
-              <v-card-text class="px-0">Loading...</v-card-text>
+              <v-card-text class="px-0 text-center">Loading...</v-card-text>
             </v-card>
-          </v-flex>
-        </v-layout>
+          </v-col>
+        </v-row>
       </v-container>
     </v-content>
   </v-app>
@@ -118,7 +116,7 @@ export default {
 </style>
 
 <style scoped>
-.application {
+.v-application {
   min-width: 300px;
 }
 .container {

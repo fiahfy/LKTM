@@ -7,5 +7,6 @@ Vue.use(Vuetify)
 new Vue({
   el: '#app',
   components: { App },
-  template: '<App />'
+  template: '<App />',
+  vuetify: new Vuetify()
 })
